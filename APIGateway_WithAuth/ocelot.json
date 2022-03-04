@@ -1,0 +1,98 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Auth/Login",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44311"
+        }
+      ],
+      "UpstreamPathTemplate": "/Gateway/Auth",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44311"
+        }
+      ],
+      "UpstreamPathTemplate": "/Gateway/user",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/GetAllUsers",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44311"
+        }
+      ],
+      "UpstreamPathTemplate": "/Gateway/AllUser",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": { // rate of limit in Ocelot API gateway
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s", // 1 second, 1s=> 1 second, 1m => 1 minute
+        "PeriodTimespan": 1, // after how much time span they can try again
+        "Limit": 1 // limit (no of request) with the time of period
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/user/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44311"
+        }
+      ],
+      "UpstreamPathTemplate": "/Gateway/User/{Id}",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44344"
+        }
+      ],
+      "UpstreamPathTemplate": "/product",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/{Id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44344"
+        }
+      ],
+      "UpstreamPathTemplate": "/product/{Id}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/GetAllProducts",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44344"
+        }
+      ],
+      "UpstreamPathTemplate": "/GetAllProducts",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44328"
+  }
+}

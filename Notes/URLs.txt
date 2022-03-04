@@ -1,0 +1,25 @@
+https://localhost:44311/api/Auth/Login 
+will be 
+https://localhost:44328/Gateway/Auth
+
+https://localhost:44311/api/User/GetAllUsers 
+will be
+https://localhost:44328/Gateway/user/GetAllUsers
+
+https://localhost:44311/api/User/GetUser/1
+will be
+https://localhost:44328/Gateway/user/GetUser/1
+
+we have not allowed create, update and delete user in Ocelot API gateway
+
+For Product creation we have allowed (below post method)
+https://localhost:44344/api/Product
+will be
+https://localhost:44328/product 
+
+https://localhost:44344/api/Product/GetAllProducts
+will be
+https://localhost:44328/GetAllProducts
+
+
+

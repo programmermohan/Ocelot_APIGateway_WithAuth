@@ -1,0 +1,21 @@
+we can configure all urls in one json file, and can redirect the routes.
+
+below we have added rate limit configuration as well in ocelot
+
+"DownstreamPathTemplate": "/api/user/GetAllUsers",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "44311"
+        }
+      ],
+      "UpstreamPathTemplate": "/Gateway/AllUser",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": { // rate of limit in Ocelot API gateway
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s", // 1 second, 1s=> 1 second, 1m => 1 minute
+        "PeriodTimespan": 1, // after how much time span they can try again
+        "Limit": 1 // limit (no of request) with the time of period
+      }
